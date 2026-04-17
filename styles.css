@@ -1,0 +1,255 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --text-color: #F1CFB6;
+    --background-color: #160F0B;
+    --primary-color: #869054;
+    --secondary-color: #101B09;
+    --accent-color: #C6773F;
+    --non-accent-color: #7F6050;
+}
+
+html {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+    font-family: 'Inter'; font-size: 14px;
+    text-align: center;
+}
+
+button {
+    width: 200px;
+    height: 50px;
+    border-radius: 30px; 
+    font-weight: 500;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:active {
+    opacity: 0.8;
+}
+
+/*  HEADER  */
+header {
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1, h3, h4, h5 {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.navbar {
+    list-style: none;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/*  HERO section */
+#hero {
+    height: 70vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.bg-image.left {
+    left: 0;
+    background-image: url('./images/van.jpg');
+}
+
+.bg-image.right {
+    right: 0;
+    background-image: url('./images/road.jpg');
+}
+
+h2 {
+    position: relative;
+    z-index: 2;
+    color: var(--primary-color);
+    margin-top: 170px;
+    margin-left: 35px;
+    font-size: 39px;
+    font-weight: 300;
+    letter-spacing: -0.06em;
+}
+
+.dark-green {
+    color: var(--secondary-color);
+}
+
+.order-btn {
+    position: relative;
+    z-index: 2;
+    margin-top: 50px; 
+    border: none;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.order-btn:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+/*  INTRO section */
+#intro {
+    margin-top: 80px;
+}
+
+.bio {
+    margin: auto;
+    margin-top: 25px;
+    max-width: 700px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* PORTFOLIO section */
+#portfolio {
+    margin-top: 60px;
+}
+
+.scrollable-container {
+    margin-top: 50px;
+    display: flex;
+    width: 98.7vw;
+    height: 540px;    
+}
+
+.photo {
+    height: 540px;
+    width: 19.5vw;
+    border: 1px solid var(--secondary-color);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+}
+
+.left-img, .right-img {
+    margin-top: 20px;
+    width: 215px;
+    height: 500px;
+}
+
+.left-img {
+    background-image: url('./images/horse.jpg');
+}
+
+.right-img {
+    background-image: url('./images/horse.jpg');
+}
+
+.left-middle-img, .right-middle-img {
+    margin-top: 20px;
+    width: 330px;
+    height: 500px;
+}
+
+.left-middle-img {
+    background-image: url('./images/bird.jpg');
+}
+
+.right-middle-img {
+    background-image: url('./images/small-bird.jpg');
+}
+
+.middle-img {
+    width: 357px;
+    background-image: url('./images/squirel.jpg');
+    opacity: 1;
+}
+
+.photo:hover {
+    opacity: 0.9;
+}
+
+.middle-img:hover {
+    opacity: 1;
+}
+
+/* ORDER section */
+#shop {
+    margin-top: 105px;
+}
+
+.prints-container {
+    width: 85vw;
+    margin: auto;
+}
+
+.prints-container .row {
+    margin: 105px 0;
+    /* margin-left: 52px; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.item {
+    height: 13.5vw;
+    width: 20vw;
+    background-image: url('./images/hills.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.row:first-child {
+    margin-top: 80px;
+}
+
+.row:last-child {
+    margin-bottom: 0;
+}
+
+.more-btn {
+    margin-top: 40px;
+    width: 145px;
+    height: 50px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+}
+
+.more-btn:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+/* CONTACT section */
+#
+
+/* FOOTER */
+.small-text {
+    font-size: 10px;
+}
