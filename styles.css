@@ -55,12 +55,12 @@ h1, h3, h4, h5, h6 {
     list-style: none;
 }
 
-.navbar a {
+a {
     text-decoration: none;
     color: var(--text-color);
 }
 
-.navbar a:hover {
+a:hover {
     text-decoration: underline;
 }
 
@@ -343,6 +343,28 @@ textarea:-webkit-autofill:focus{
 footer {
     margin-top: 70px;
 }
+
+hr {
+    margin: auto;
+    width: 95%;
+    border: 1px solid var(--non-accent-color)
+}
+
+.footer-text {
+    margin: 35px auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .small-text {
+    color: var(--non-accent-color);
     font-size: 10px;
+}
+
+.small-text a {
+    color: var(--non-accent-color)
+}
+
+.small-text a:hover {
+    color: var(--text-color);
 }
