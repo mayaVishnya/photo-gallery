@@ -77,9 +77,9 @@ a:hover {
     top: 0;
     bottom: 0;
     width: 50%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     opacity: 0.6;
     z-index: 1;
 }
@@ -157,45 +157,30 @@ h2 {
 
 /* BLUR images! */
 .photo {
-    height: 540px;
-    width: 19.5vw;
+    display: block;
+    /* height: 540px; */
+    /* width: 19.5vw; */
     border: 1px solid var(--secondary-color);
-    background-size: cover;
-    background-position: center;
+    object-fit: cover;
+    object-position: center;
     opacity: 0.6;
+    transition: opacity 0.3s ease;
 }
 
 .left-img, .right-img {
     margin-top: 20px;
-    width: 215px;
+    width: 183px;
     height: 500px;
-}
-
-.left-img {
-    background-image: url('./images/horse.jpg');
-}
-
-.right-img {
-    background-image: url('./images/horse.jpg');
 }
 
 .left-middle-img, .right-middle-img {
     margin-top: 20px;
-    width: 330px;
+    width: 290px;
     height: 500px;
 }
 
-.left-middle-img {
-    background-image: url('./images/bird.jpg');
-}
-
-.right-middle-img {
-    background-image: url('./images/small-bird.jpg');
-}
-
 .middle-img {
-    width: 357px;
-    background-image: url('./images/squirel.jpg');
+    width: 317px;
     opacity: 1;
 }
 
