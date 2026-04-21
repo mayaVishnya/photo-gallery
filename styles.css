@@ -1,3 +1,4 @@
+/* GLOBAL settings*/
 *,
 *::after,
 *::before {
@@ -86,12 +87,10 @@ a:hover {
 
 .bg-image.left {
     left: 0;
-    background-image: url('./images/van.jpg');
 }
 
 .bg-image.right {
     right: 0;
-    background-image: url('./images/road.jpg');
 }
 
 h2 {
@@ -121,8 +120,6 @@ h2 {
 
 .order-btn:hover {
     opacity: 0.9;
-    /* background-color: var(--text-color);
-    color: var(--background-color); */
 }
 
 .order-btn:active {
@@ -151,11 +148,10 @@ h2 {
 .scrollable-container {
     margin-top: 50px;
     display: flex;
-    width: 98.7vw;
+    width: 98.7%;
     height: 540px;
 }
 
-/* BLUR images! */
 .photo {
     display: block;
     border: 1px solid var(--secondary-color);
@@ -163,25 +159,26 @@ h2 {
     object-position: center;
     opacity: 0.6;
     transition: opacity 0.3s ease;
+    filter: blur(1px);
+    height: 92%;
+    margin-top: 20px;
 }
 
 .left-img, .right-img {
     margin-top: 20px;
-    width: 183px;
-    height: 500px;
-    filter: blur(1px);
+    width: 15%;
 }
 
 .left-middle-img, .right-middle-img {
-    margin-top: 20px;
-    width: 290px;
-    height: 500px;
-    filter: blur(1px);
+    width: 22%;
 }
 
 .middle-img {
-    width: 317px;
+    margin-top: 0;
+    width: 27%;
+    height: 100%;
     opacity: 1;
+    filter: blur(0);
 }
 
 .photo:hover {
@@ -199,7 +196,7 @@ h2 {
 }
 
 .prints-container {
-    width: 94vw;
+    width: 94%;
     margin: auto;
 }
 
@@ -238,7 +235,7 @@ h2 {
 .item-overlay {
     position: absolute;
     top: 0;
-    left: 0;    
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(22, 15, 11, 0.4);
@@ -301,7 +298,7 @@ h2 {
 
 #contact-form {
     margin: auto;
-    width: 33vw;
+    width: 33%;
     text-align: left;
 }
 
@@ -320,7 +317,7 @@ fieldset label {
     font-size: 14px;
 }
 
-input, textarea{
+input, textarea {
     width: 80%;
     margin: 10px 40px 35px;
     background-color: var(--background-color);
@@ -337,7 +334,7 @@ textarea {
     border: 1px solid var(--primary-color);
 }
 
-input:focus{
+input:focus {
     outline: none;
     border-bottom: 1px solid var(--text-color);
 }
@@ -345,15 +342,15 @@ input:focus{
 textarea:focus {
     outline: none;
     border: 1px solid var(--text-color);
-} 
+}
 
 /* Change autocomplete styles in WebKit */
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus{
+textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--text-color);
   -webkit-box-shadow: 0 0 0px 1000px var(--secondary-color) inset;
 }
@@ -406,4 +403,171 @@ hr {
 
 .small-text a:hover {
     color: var(--text-color);
+}
+
+/* MOBILE OVERRIDES */
+
+@media screen and (max-width: 768px) {
+    /* GLOBAL Mobile Touch fixes*/
+    a, button, .item, .photo {
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    @media(hover: none) {
+        .item:hover,
+        .photo:hover,
+        .order-btn:hover,
+        .more-btn:hover,
+        .view-btn:hover,
+        #send-btn:hover,
+        a:hover {
+            opacity: 1;
+            transform: none;
+            text-decoration: none;
+        }
+
+        .item:active,
+        .photo:active,
+        button:active,
+        a:active {
+            opacity: 0.8;
+            transform: scale(0.98);
+        }
+    }
+
+    a {
+        display: block;
+        padding: 8px;
+    }
+
+    /*  HERO section */
+    .bg-image {
+        width: 100%;
+    }
+
+    .bg-image.left {
+        opacity: 0;
+    }
+
+    .bg-image.right {
+        opacity: 0.9;
+    }
+
+    .order-btn {
+        margin-top: 110px;
+    }
+
+    /*  INTRO section */
+    .bio {
+        margin: auto 15px;
+    }
+
+    /* PORTFOLIO section */
+    .scrollable-container {
+        flex-direction: column;
+        align-items: center;
+        height: 890px;
+    }
+
+    .photo {
+        width: 55%;
+        margin: 0;
+    }
+
+    .left-img, .right-img {
+        display: none;
+    }
+
+    .middle-img {
+        width: 60%;
+    }
+
+    /* ORDER section TO DOOOO*/
+    #shop {
+        margin-top: 130px;
+    }
+
+    .prints-container {
+        width: 100%;
+        margin: auto;
+    }
+
+    .prints-container .row {
+        margin: 35px 0;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 50px;
+    }
+
+    .item {
+        margin: auto;
+        width: 70%;
+        height: 95%;
+        overflow: hidden;
+    }
+
+    .item-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .row:last-child {
+        display: none;
+    }
+
+    .item-overlay {
+        /* initially shown */
+        opacity: 1;
+    }
+
+     .item:hover .item-overlay .view-btn {
+        opacity: 1;
+    }
+
+    .view-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        padding: 0;
+        font-size: 0;
+        color: transparent;
+        background-color: transparent;
+        opacity: 0;
+    }
+
+    .view-btn::after {
+        content: '\f0a9';
+        font-family: 'FontAwesome';
+        font-size: 25px;
+        color: var(--primary-color);
+    }
+
+    .view-btn:hover {
+        border: none;
+    }
+
+    .more-btn {
+        margin-top: 20px;
+    }
+
+    /* CONTACT section */
+    #contact-form {
+        width: 80%;
+    }
+
+    input, textarea {
+        margin: 10px 30px 50px;
+    }
+
+    /* FOOTER */
+    .footer-text {
+        width: 85%;
+        margin: 15px auto;
+        flex-direction: column;
+    }
+
+    .small-text {
+        margin-bottom: 15px;
+    }
 }
