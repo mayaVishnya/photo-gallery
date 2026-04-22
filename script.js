@@ -12,6 +12,7 @@ const items = getItems();
 let isMobile = window.isMobile();
 let itemsPerRow = isMobile ? 1 : 4;
 let itemsTotal = isMobile ? 4 : 8;
+let prevTotal = itemsTotal;
 updateItems(itemsPerRow, items, itemsTotal);
 
 // Setting up contact form
@@ -178,6 +179,7 @@ function updateItems (_itemsPerRow, _itemsArr, itemsTotal) {
     container.innerHTML = '';
     
     const itemsArr = _itemsArr;
+    const newItemsNodes = []
     
     itemsArr.forEach((item, index) => {
         if (index >= itemsTotal) return;
@@ -191,6 +193,10 @@ function updateItems (_itemsPerRow, _itemsArr, itemsTotal) {
         // create new item
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("item");
+        if (index > prevTotal) {
+            itemDiv.classList.add("new-item");
+            newItemsNodes.push(itemDiv);
+        }
     
         // fetch image
         const url = `https://res.cloudinary.com/dtvkhhwwb/image/upload/w_400,q_auto,f_auto/${item.publicId}.jpg`;
@@ -214,6 +220,36 @@ function updateItems (_itemsPerRow, _itemsArr, itemsTotal) {
         // adding items to the row
         currentRow.append(itemDiv);
     });
+    prevTotal = itemsTotal;
+
+    if (newItemsNodes.length > 0) {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                newItemsNodes.forEach(item => item.classList.add("loaded"));
+
+                setTimeout(() => {
+                    newItemsNodes[0].scrollIntoView({
+                        behavior: 'smooth',
+                        block: "start"
+                    });
+                }, 150);
+            });
+        });
+    }
+}
+
+function scrollToTopRow() {
+    let index = isMobile ? 0 : 1;
+    const firstRow = document.getElementsByClassName("row")[index];
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            firstRow.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+
+    }, 150);
 }
 
 // Handling More/Less btn
@@ -226,6 +262,7 @@ function onMoreBtnPressed() {
         updateItems(itemsPerRow, items, itemsTotal);
         moreBtn.textContent = "MORE";
         less = false;
+        scrollToTopRow();
     } else {
         itemsTotal += isMobile? itemsPerRow * 2 : itemsPerRow;
         updateItems(itemsPerRow, items, itemsTotal);
