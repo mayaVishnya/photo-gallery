@@ -6,6 +6,7 @@ window.isMobile = function(){
     return false;
   }
 };
+let isMobile = window.isMobile();
 
 /* PORTFOLIO section */
 
@@ -19,24 +20,22 @@ const carouselImgs = [
     { publicId: "squirel_xnm2z6", altText: "Squirel" }
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
     const carouselTrack = document.querySelector('#carousel-track');
     const carouselViewport = document.querySelector('#carousel-viewport');
     let currentIndex = 0;
     
-    function buildCarousel(numOfElementsDisplayed = 3) {
+    function buildCarousel(_middleIndex = 1) {
         if (!carouselTrack) return;
     
         carouselTrack.innerHTML = '';
-        const middleIndex = Math.floor(numOfElementsDisplayed / 2);
-        currentIndex = middleIndex;
+        currentIndex = _middleIndex;
     
         carouselImgs.forEach((item, index) => {            
             const img = document.createElement("img");
             img.src = `https://res.cloudinary.com/dtvkhhwwb/image/upload/h_400,q_auto,f_auto/${item.publicId}.jpg`;
             img.alt = item.altText;
             img.classList.add("photo");
-            if (index === middleIndex)
+            if (index === _middleIndex)
                 img.classList.add("is-focused");
     
             // adding img to the track
@@ -44,7 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     
-    buildCarousel();
+    let numOfElementsDisplayed = isMobile ? 0 : 1;
+    buildCarousel(numOfElementsDisplayed);
     
     // -- ADDING ANIMATION --
     const carouselImages = Array.from(document.querySelectorAll('#carousel-track .photo'));
@@ -53,25 +53,25 @@ document.addEventListener("DOMContentLoaded", () => {
     let isAnimating = false;
     let dir = 1; // 1 - forward, -1 - backwards
     
-    function updateFocus() {
-        carouselImages.forEach(img => img.classList.remove('is-focused'));
+function updateFocus() {
+    carouselImages.forEach(img => img.classList.remove('is-focused'));
     
-        if (currentIndex >= carouselImages.length)
-            currentIndex = carouselImgs.length - 1;
-        if (currentIndex < 0)
-            currentIndex = 0;
+    if (currentIndex >= carouselImages.length)
+        currentIndex = carouselImgs.length - 1;
+    if (currentIndex < 0)
+        currentIndex = 0;
 
-        console.log("currentIndex: ",currentIndex);
-        carouselImages[currentIndex].classList.add('is-focused');
+    console.log("currentIndex: ",currentIndex);
+    carouselImages[currentIndex].classList.add('is-focused');
 
-        return currentIndex;
-    }
+    return currentIndex;
+}
     
-    // add caroulel 'movement'
-    const AUTO_SLIDE_INTERVAL = 3000; // 3 sec
-    let autoSlideTimer;
+// add caroulel 'movement'
+const AUTO_SLIDE_INTERVAL = 3000; // 3 sec
+let autoSlideTimer;
     
-    function nextSlide() {
+function nextSlide() {
         if (isAnimating) return;
         isAnimating = true;
     
@@ -80,14 +80,17 @@ document.addEventListener("DOMContentLoaded", () => {
     
         // calculating shift amount
         const gap = 20;
-        const moveAmount = firstImg.getBoundingClientRect().width + gap;
+        const moveAmount = isMobile ? firstImg.getBoundingClientRect().height + gap :
+                            firstImg.getBoundingClientRect().width + gap;
         currentTranslate -= moveAmount;
+        const firstImgSize = isMobile ? firstImg.getBoundingClientRect().height / 3 : 
+                            firstImg.getBoundingClientRect().width;
     
         // check for end of track
-        const trackWidth = carouselTrack.scrollWidth;
-        const viewportWidth = carouselViewport.clientWidth;
-        const maxTranslate = -(trackWidth - viewportWidth);
-        const centerOffset = (viewportWidth / 2) - firstImg.getBoundingClientRect().width;
+        const trackSize = isMobile ? carouselTrack.scrollHeight : carouselTrack.scrollWidth;
+        const viewportSize = isMobile ? carouselViewport.clientHeight : carouselViewport.clientWidth;
+        const maxTranslate = -(trackSize - viewportSize);
+        const centerOffset = (viewportSize / 2) - firstImgSize;
 
         // calc next position
         let nextIndex = currentIndex + dir;
@@ -112,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
             currentTranslate = 0;
         }
 
-        carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
+        carouselTrack.style.transform = isMobile ? `translateY(${currentTranslate}px)` : `translateX(${currentTranslate}px)`;
     
         updateFocus();
     
@@ -120,39 +123,38 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             isAnimating = false;
         }, 500);
-    }
+}
     
-    // starting the animation timer
-    function startAutoSlide () {
-        // clear current timers
-        stopAutoSlide();
+// starting the animation timer
+function startAutoSlide () {
+    // clear current timers
+    stopAutoSlide();
         
-        autoSlideTimer = setInterval(nextSlide, AUTO_SLIDE_INTERVAL);
-    }
+    autoSlideTimer = setInterval(nextSlide, AUTO_SLIDE_INTERVAL);
+}
     
-    // stop the timer
-    function stopAutoSlide () {
-        if (autoSlideTimer)
-            clearInterval(autoSlideTimer);
-    }
+// stop the timer
+function stopAutoSlide () {
+    if (autoSlideTimer)
+        clearInterval(autoSlideTimer);
+}
     
-    // -- INIT CAROUSEL --
-    startAutoSlide();
+// -- INIT CAROUSEL --
+startAutoSlide();
     
-    // Pause animation on hover (PC)
-    if (carouselViewport) {
-        carouselViewport.addEventListener('mouseenter', stopAutoSlide);
-        carouselViewport.addEventListener('mouseleave', startAutoSlide);
-    }
+// Pause animation on hover (PC)
+if (carouselViewport) {
+    carouselViewport.addEventListener('mouseenter', stopAutoSlide);
+    carouselViewport.addEventListener('mouseleave', startAutoSlide);
+}
     
-    // Pause animation on touch (Mobile)
-    if (carouselViewport) {
-        carouselViewport.addEventListener('touchstart', stopAutoSlide);
-        carouselViewport.addEventListener('touchend', () => {
-            setTimeout(startAutoSlide, 2000);
-        })
-    }
-});
+// Pause animation on touch (Mobile)
+if (carouselViewport) {
+    carouselViewport.addEventListener('touchstart', stopAutoSlide);
+    carouselViewport.addEventListener('touchend', () => {
+        setTimeout(startAutoSlide, 2000);
+    })
+}
 
 /* GALLERY section */
 
@@ -311,7 +313,6 @@ function updateItems (_itemsPerRow, _itemsArr, itemsTotal) {
 
 // Adding grid items on load
 const items = getItems();
-let isMobile = window.isMobile();
 let itemsPerRow = isMobile ? 1 : 4;
 let itemsTotal = isMobile ? 4 : 8;
 let prevTotal = itemsTotal;

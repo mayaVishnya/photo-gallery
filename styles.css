@@ -67,7 +67,7 @@ a:hover {
 
 /*  HERO section */
 #hero {
-    height: 70vh;
+    height: 67vh;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -97,7 +97,7 @@ h2 {
     position: relative;
     z-index: 2;
     color: var(--primary-color);
-    margin-top: 170px;
+    margin-top: 184px;
     margin-left: 35px;
     font-size: 39px;
     font-weight: 300;
@@ -109,6 +109,7 @@ h2 {
 }
 
 .see-more-btn {
+    display: none;
     width: 130px;
     position: relative;
     z-index: 2;
@@ -212,7 +213,7 @@ h2 {
     height: 100%;
     aspect-ratio: 5/6;
     font-size: 13px;
-    transition: transform 0.3s ease opacity 0.5s ease;
+    transition: transform 0.5s ease opacity 0.5s ease;
 }
 
 .item-img {
@@ -237,7 +238,7 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(22, 15, 11, 0.5);
+    box-shadow: 0 -50px 70px var(--background-color) inset;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -254,8 +255,8 @@ h2 {
 }
 
 #view-btn {
-    width: 57px;
-    height: 22px;
+    width: 63px;
+    height: 30px;
     font-size: 11px;
     color: var(--background-color);
     background-color: var(--primary-color);
@@ -427,7 +428,6 @@ hr {
     @media(hover: none) {
         .item:hover,
         .photo:hover,
-        .see-more-btn:hover,
         #more-btn:hover,
         #view-btn:hover,
         #send-btn:hover,
@@ -452,6 +452,14 @@ hr {
     }
 
     /* mobile HERO section */
+    #hero {
+        height: 60vh;
+    }
+
+    h2 {
+        margin-top: 140px;
+    }
+
     .bg-image {
         width: 100%;
     }
@@ -464,24 +472,28 @@ hr {
         opacity: 0.9;
     }
 
-    .see-more-btn {
-        margin-top: 110px;
-    }
-
     /* mobile INTRO section */
     .bio {
         margin: auto 15px;
     }
 
     /* mobile PORTFOLIO section */
-    #carousel-trck {
+    #carousel-viewport {
+        padding: 30px;
+        width: 80%;
+        max-width: 80%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #carousel-track {
         flex-direction: column;
         align-items: center;
-        height: 890px;
+        height: 670px;
     }
 
     .photo {
-        width: 55%;
+        width: 100%;
         margin: 0;
     }
 
@@ -493,7 +505,7 @@ hr {
         width: 60%;
     }
 
-    /* mobile GALLERY section TO DOOOO*/
+    /* mobile GALLERY */
     #gallery {
         margin-top: 130px;
     }
@@ -527,12 +539,7 @@ hr {
         display: none;
     }
 
-    .item-overlay {
-        /* initially shown */
-        opacity: 1;
-    }
-
-     .item:hover .item-overlay #view-btn {
+    .item:hover .item-overlay #view-btn {
         opacity: 1;
     }
 
