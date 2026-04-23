@@ -249,7 +249,7 @@ function updateItems (_itemsPerRow, _itemsArr, itemsTotal) {
     let currentRow = null;
     const itemsPerRow = _itemsPerRow;
 
-    container.innerHTML = `<div id="item-modal"><div id="modal-content"></div></div>`;
+    container.innerHTML = '';
     
     const itemsArr = _itemsArr;
     const newItemsNodes = []
@@ -335,11 +335,34 @@ function scrollToTopRow() {
     }, 150);
 }
 
+// Handling More/Less btn
+const moreBtn = document.getElementById("more-btn");
+let less = false;
+
+function onMoreBtnPressed() {
+    if (less) {
+        itemsTotal = isMobile ? 4 : 8;
+        updateItems(itemsPerRow, items, itemsTotal);
+        moreBtn.textContent = "MORE";
+        less = false;
+        scrollToTopRow();
+    } else {
+        itemsTotal += isMobile? itemsPerRow * 2 : itemsPerRow;
+        updateItems(itemsPerRow, items, itemsTotal);
+        if (itemsTotal > items.length) {
+            moreBtn.textContent = "LESS";
+            less = true;
+        }
+    }
+}
+
 // Handling View btn
 const modal = document.getElementById("item-modal");
+const modalContent = document.getElementById("modal-content");
 
 function onViewBtnPressed(item_id) {
-    item_id = item_id.match(/(\d)/)[0];
+    item_id = item_id.match(/(\d)+/)[0];
+    if (!item_id) return;
 
     const modalContent = document.getElementById("modal-content");
 
@@ -353,9 +376,7 @@ function onViewBtnPressed(item_id) {
     img.src = url;
     if (item.altText != null) img.alt = item.altText;
     img.onload = function() {
-        console.log(this.naturalWidth, this.naturalHeight);
         if (this.naturalWidth > this.naturalHeight) {
-            console.log("HERRE");
             isVertical = false;
         } else {
             isVertical = true;
@@ -385,27 +406,6 @@ modal.addEventListener('click', function(event) {
         onClosePressed();
     }
 });
-
-// Handling More/Less btn
-const moreBtn = document.getElementById("more-btn");
-let less = false;
-
-function onMoreBtnPressed() {
-    if (less) {
-        itemsTotal = isMobile ? 4 : 8;
-        updateItems(itemsPerRow, items, itemsTotal);
-        moreBtn.textContent = "MORE";
-        less = false;
-        scrollToTopRow();
-    } else {
-        itemsTotal += isMobile? itemsPerRow * 2 : itemsPerRow;
-        updateItems(itemsPerRow, items, itemsTotal);
-        if (itemsTotal > items.length) {
-            moreBtn.textContent = "LESS";
-            less = true;
-        }
-    }
-}
 
 /* CONTACT section*/
 
