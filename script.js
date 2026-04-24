@@ -284,9 +284,7 @@ function updateItems (_itemsPerRow, _itemsArr, itemsTotal) {
         overlayDiv.classList.add("item-overlay");
         overlayDiv.innerHTML = 
             `<span id="name">${item.name}</span>
-            <button id= "view-btn-${item.id}" 
-                    class="view-btn" 
-                    onclick="onViewBtnPressed(this.id)">
+            <button class="view-btn" data-id="${item.id}">
                     VIEW
             </button>`;
     
@@ -339,7 +337,7 @@ function scrollToTopRow() {
 const moreBtn = document.getElementById("more-btn");
 let less = false;
 
-function onMoreBtnPressed() {
+moreBtn.addEventListener("click", () => {
     if (less) {
         itemsTotal = isMobile ? 4 : 8;
         updateItems(itemsPerRow, items, itemsTotal);
@@ -354,21 +352,36 @@ function onMoreBtnPressed() {
             less = true;
         }
     }
-}
+});
 
 // Handling View btn
 const modal = document.getElementById("item-modal");
 const modalContent = document.getElementById("modal-content");
+const galleryContainer = document.getElementById("gallery-container");
 
-function onViewBtnPressed(item_id) {
-    item_id = item_id.match(/(\d)+/)[0];
-    if (!item_id) return;
+if (galleryContainer) {
+    galleryContainer.addEventListener('click', (event) => {
+        if (event.target.classList.contains('view-btn')) {
+            const id = event.target.getAttribute('data-id');
+            openModal(parseInt(id, 10));
+        }
+    });
+}
 
-    const modalContent = document.getElementById("modal-content");
+if (modal) {
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal || event.target.classList.contains('close')) {
+            closeModal();
+        }
+    });
+}
 
-    let isVertical = true;
+function openModal(item_id) {
+    if (!modal) return;
+
     const items = getItems();
-    const item = items.at(item_id);
+    const item = items.find(i => i.id === item_id);
+    if (!item) return;
     
     // fetch image
     const url = `https://res.cloudinary.com/dtvkhhwwb/image/upload/w_400,q_auto,f_auto/${item.publicId}.jpg`;
@@ -376,11 +389,8 @@ function onViewBtnPressed(item_id) {
     img.src = url;
     if (item.altText != null) img.alt = item.altText;
     img.onload = function() {
-        if (this.naturalWidth > this.naturalHeight) {
-            isVertical = false;
-        } else {
-            isVertical = true;
-        }
+        const isVertical = this.naturalWidth < this.naturalHeight;
+    
         if (isMobile) {
             img.style.width = `95%`;
             modalContent.style.margin = `${isVertical ? 8 : 25}% auto`;
@@ -392,7 +402,7 @@ function onViewBtnPressed(item_id) {
         modalContent.innerHTML = `
             <div class="name-close-div">
                 <span class="name">${item.name}</span>
-                <span class="close" onclick="onClosePressed()">&times;</span>
+                <span id="close">&times;</span>
             </div>
         `;
         modalContent.append(img);
@@ -401,16 +411,21 @@ function onViewBtnPressed(item_id) {
     };
 }
 
-function onClosePressed() {
-    modal.style.display = "none";
+function closeModal() {
+    if (modal) modal.style.display = "none";
 }
 
-// Close when clicking the background overlay ---
-modal.addEventListener('click', function(event) {
-    if (event.target === this) {
-        onClosePressed();
-    }
-});
+// const closeBtn = document.getElementById('close');
+// closeBtn.addEventListener("click", () => {
+//     modal.style.display = "none";
+// });
+
+// // Close when clicking the background overlay ---
+// modal.addEventListener('click', function(event) {
+//     if (event.target === this) {
+//         onClosePressed();
+//     }
+// });
 
 /* CONTACT section*/
 
@@ -419,7 +434,7 @@ const contactForm = document.getElementById("contact-form");
 const sendBtn = document.getElementById("send-btn");
 let isSending = false;
 
-function sendEmail(event) {
+sendBtn.addEventListener("click", (event) => {
     if (event) event.preventDefault();
     if (!contactForm.checkValidity()) {
         contactForm.reportValidity();
@@ -464,7 +479,7 @@ function sendEmail(event) {
             resetBtn();
         }
     );
-}
+});
 
 function resetBtn() {
     isSending = false;
