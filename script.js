@@ -381,8 +381,14 @@ function onViewBtnPressed(item_id) {
         } else {
             isVertical = true;
         }
-        img.style.width = `${isVertical ? 350 : 550}px`;
-    
+        if (isMobile) {
+            img.style.width = `95%`;
+            modalContent.style.margin = `${isVertical ? 8 : 25}% auto`;
+        } else {
+            img.style.width = `${isVertical ? 40 : 70}%`;
+            modalContent.style.margin = `${isVertical ? 5 : 10}% auto`;
+        }
+
         modalContent.innerHTML = `
             <div class="name-close-div">
                 <span class="name">${item.name}</span>
@@ -391,7 +397,6 @@ function onViewBtnPressed(item_id) {
         `;
         modalContent.append(img);
         
-        modalContent.style.margin = `${isVertical ? 5 : 10}% auto`;
         modal.style.display = "block";
     };
 }

@@ -611,6 +611,12 @@ hr {
         margin-top: 20px;
     }
 
+    #modal-content {
+        padding: 10px;
+        width: 100%;
+        height: 60%;
+    }
+
     /* mobile CONTACT section */
     #contact-form {
         width: 80%;
