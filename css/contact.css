@@ -82,3 +82,23 @@ textarea:-webkit-autofill:focus {
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
 }
+
+/* MOBILE OVERRIDES */
+
+@media screen and (max-width: 768px) {
+     @media(hover: none) {
+        #send-btn:hover {
+            opacity: 1;
+            transform: none;
+            text-decoration: none;
+        }
+    }
+
+    #contact-form {
+        width: 80%;
+    }
+
+    input, textarea {
+        margin: 10px 30px 50px;
+    }
+}

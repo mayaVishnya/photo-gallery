@@ -40,3 +40,27 @@ h2 {
 .dark-green {
     color: var(--secondary-color);
 }
+
+/* MOBILE OVERRIDES */
+
+@media screen and (max-width: 768px) {
+    #hero {
+        height: 60vh;
+    }
+
+    h2 {
+        margin-top: 150px;
+    }
+
+    .bg-image {
+        width: 100%;
+    }
+
+    .bg-image.left {
+        opacity: 0;
+    }
+
+    .bg-image.right {
+        opacity: 0.9;
+    }
+}

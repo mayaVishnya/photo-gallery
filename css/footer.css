@@ -27,3 +27,17 @@ hr {
 .small-text a:hover {
     color: var(--text-color);
 }
+
+/* MOBILE OVERRIDES */
+
+@media screen and (max-width: 768px) {
+    .footer-text {
+        width: 85%;
+        margin: 15px auto;
+        flex-direction: column;
+    }
+
+    .small-text {
+        margin-bottom: 15px;
+    }
+}

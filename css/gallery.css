@@ -15,15 +15,8 @@
 
 
 #gallery-container {
-    width: 94%;
-    margin: auto;
-}
-
-#gallery-container .row {
-    margin: 50px 0 40px;
-    justify-content: center;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: block;
+    width: 100%;
     gap: 20px;
 }
 
@@ -32,8 +25,7 @@
     position: relative;
     cursor: pointer;
     height: 100%;
-    aspect-ratio: 5/6;
-    font-size: 13px;
+    width: 100%;
     transition: transform 0.5s ease opacity 0.5s ease;
 }
 
@@ -43,14 +35,6 @@
     width: 100%;
     object-fit: cover;
     object-position: center;
-}
-
-.row:first-child {
-    margin-top: 80px;
-}
-
-.row:last-child {
-    margin-bottom: 0;
 }
 
 .item-overlay {
@@ -74,6 +58,7 @@
 
 .item:hover {
     transform: scale(1.02);
+    z-index: 10;
 }
 
 #more-btn {
@@ -90,6 +75,7 @@
     color: var(--background-color);
 }
 
+/* Animation States */
 .item.new-item {
     opacity: 0;
     transform: translateY(30px);
@@ -100,4 +86,47 @@
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+}
+
+/* MOBILE OVERRIDES */
+
+@media screen and (max-width: 768px) {
+    @media(hover: none) {
+        .item:hover,
+        #more-btn:hover{
+            opacity: 1;
+            transform: none;
+            text-decoration: none;
+        }
+
+        .item:active {
+            opacity: 0.8;
+            transform: scale(0.98);
+        }
+    }
+
+    #gallery {
+        margin-top: 130px;
+    }
+
+    #gallery-container {
+        width: 100%;
+        margin: auto;
+    }
+
+    .item {
+        width: 100%;
+        float: none;
+        margin-bottom: 30px;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .item-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .item:hover .item-overlay {
+        opacity: 1;
+    }
 }

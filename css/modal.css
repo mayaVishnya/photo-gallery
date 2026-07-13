@@ -35,3 +35,13 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+/* MOBILE OVERRIDES */
+
+@media screen and (max-width: 768px) {
+    #modal-content {
+        padding: 10px;
+        width: 100%;
+        height: 60%;
+    }
+}
