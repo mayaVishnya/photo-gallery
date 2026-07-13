@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Niki's Gallery</title>
-        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     </head>
@@ -36,15 +36,24 @@
                 <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
             </section>
             <section id="portfolio">
-                <h4>PORTFOLIO</h4>
+                 <!-- TO DO: randomise the pictures -->
+                 <!-- TO DO: change interaction -->
                 <div id="carousel-viewport">
                     <div id="carousel-track">
                     </div>
                 </div>
             </section>
             <section id="gallery">
-                <h5>GALLERY</h5>
+                <h4>GALLERY</h4>
+                <select id="dropdown" name="dropdown">
+                    <option value="all">All</option>
+                    <option value="wildlife">Wildlife</option>
+                    <option value="ladscape">Landscape</option>
+                    <option value="street">Street</option>
+                </select>
                 <div id="gallery-container">
+                 <!-- TO DO: do collage like website https://www.nigeldanson.com/gallery/iceland -->
+
                 </div>
                 <button id="more-btn">MORE</button>
                 <div id="item-modal"><div id="modal-content"></div></div>

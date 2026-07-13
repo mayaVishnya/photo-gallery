@@ -182,7 +182,7 @@ h2 {
 }
 
 .photo:hover {
-    opacity: 0.9;
+    opacity: 1;
     filter: blur(0);
 }
 .is-focused:hover {
@@ -193,6 +193,17 @@ h2 {
 #gallery {
     margin-top: 100px;
 }
+
+#dropdown {
+    display: flex;
+    margin-left: 3%;
+    background-color: var(--background-color);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    padding: 8px;
+}
+
 
 #gallery-container {
     width: 94%;
@@ -239,29 +250,12 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    box-shadow: 0 -50px 70px var(--background-color) inset;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 10px;
+    box-shadow: 0 -5px 15px var(--background-color) inset;
 
     /* initially hidden */
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     z-index: 2;
-}
-
-.item-overlay #price {
-    color: var(--primary-color);
-}
-
-.view-btn {
-    width: 63px;
-    height: 30px;
-    font-size: 11px;
-    color: var(--background-color);
-    background-color: var(--primary-color);
-    border: none;
 }
 
 .item:hover .item-overlay {
@@ -270,11 +264,7 @@ h2 {
 }
 
 .item:hover {
-    transform: scale(1.05);
-}
-
-.view-btn:hover {
-    border: 1px solid var(--background-color);
+    transform: scale(1.02);
 }
 
 #more-btn {
@@ -322,13 +312,9 @@ h2 {
     height: 40%;
 }
 
-.name-close-div {
+.close-div {
     display: block;
     margin-bottom: 10px;
-}
-
-.name {
-    font-size: 16px;
 }
 
 #close {
@@ -471,7 +457,7 @@ hr {
         .item:hover,
         .photo:hover,
         #more-btn:hover,
-        .view-btn:hover,
+        /* .view-btn:hover, */
         #send-btn:hover,
         a:hover {
             opacity: 1;
@@ -581,30 +567,8 @@ hr {
         display: none;
     }
 
-    .item:hover .item-overlay .view-btn {
+    .item:hover .item-overlay {
         opacity: 1;
-    }
-
-    .view-btn {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        padding: 0;
-        font-size: 0;
-        color: transparent;
-        background-color: transparent;
-        opacity: 0;
-    }
-
-    .view-btn::after {
-        content: '\f0a9';
-        font-family: 'FontAwesome';
-        font-size: 25px;
-        color: var(--primary-color);
-    }
-
-    .view-btn:hover {
-        border: none;
     }
 
     #more-btn {
