@@ -1,0 +1,4 @@
+initCarousel();
+initGallery();
+initModal();
+initContact();

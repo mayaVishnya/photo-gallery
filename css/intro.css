@@ -1,0 +1,13 @@
+/*  INTRO section */
+#intro {
+    margin-top: 80px;
+}
+
+.bio {
+    margin: auto;
+    margin-top: 25px;
+    max-width: 690px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 25px;
+}

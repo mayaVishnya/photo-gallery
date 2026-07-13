@@ -1,0 +1,84 @@
+/* CONTACT section */
+#contact {
+    margin-top: 90px;
+    color: var(--primary-color);
+}
+
+#contact-form {
+    margin: auto;
+    width: 33%;
+    text-align: left;
+}
+
+h6 {
+    font-size: 26px;
+    margin: 18px 0 60px;
+    text-align: center;
+}
+
+fieldset {
+    border: 1px solid var(--primary-color);
+}
+
+fieldset label {
+    margin: 5px 40px 35px;
+    font-size: 14px;
+}
+
+input, textarea {
+    width: 80%;
+    margin: 10px 40px 35px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 17px;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+textarea {
+    border: 1px solid var(--primary-color);
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--text-color);
+}
+
+textarea:focus {
+    outline: none;
+    border: 1px solid var(--text-color);
+}
+
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-color);
+  -webkit-box-shadow: 0 0 0px 1000px var(--secondary-color) inset;
+}
+
+#send-btn {
+    margin: 10px 0 30px;
+    width: 145px;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.center {
+    text-align: center;
+}
+
+#send-btn:hover {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
