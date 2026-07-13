@@ -1,4 +1,6 @@
 /* CAROUSEL section */
+// TO DO: adapt for MOBILE
+
 function initCarousel () {
     const isMobile = window.isMobile();
     const carouselImgs = [

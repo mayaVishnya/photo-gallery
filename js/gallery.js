@@ -1,4 +1,5 @@
 /* GALLERY section */
+// TO DO: adapt for MOBILE
 function initGallery () {
     const isMobile = window.isMobile();
     const container = document.getElementById("gallery-container");

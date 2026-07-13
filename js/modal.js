@@ -1,3 +1,6 @@
+// MODAL for gallery pictures
+
+// TO DO: add left right arrows, make items larger
 function initModal() {
     const isMobile = window.isMobile();
 
