@@ -1,0 +1,93 @@
+/* CAROUSEL section */
+#carousel {
+    margin-top: 60px;
+}
+
+#carousel-viewport {
+    padding: 50px;
+    margin: 20px auto;
+    width: 95%;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#carousel-track {
+    margin: auto;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px;
+}
+
+.photo {
+    margin: auto;
+    max-height: 70hv;
+    flex-shrink: 0;
+    opacity: 0.6;
+    filter: blur(1px);
+    transform: scale(1);
+    transition: all 0.5s ease;
+}
+
+.is-focused {
+    transform: scale(1.1);
+    opacity: 1;
+    filter: blur(0);
+    z-index: 10;
+}
+
+.photo:hover {
+    opacity: 1;
+    filter: blur(0);
+}
+.is-focused:hover {
+    opacity: 1;
+}
+
+/* MOBILE OVERRIDES */
+
+@media screen and (max-width: 768px) {
+    .photo {
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    @media(hover: none) {
+        .photo:hover {
+            opacity: 1;
+            transform: none;
+            text-decoration: none;
+        }
+
+        .photo:active {
+            opacity: 0.8;
+            transform: scale(0.98);
+        }
+    }
+
+    #carousel-viewport {
+        padding: 30px;
+        width: 80%;
+        max-width: 80%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #carousel-track {
+        flex-direction: column;
+        align-items: center;
+        height: 670px;
+    }
+
+    .photo {
+        width: 100%;
+        margin: 0;
+    }
+
+    .left-img, .right-img {
+        display: none;
+    }
+
+    .middle-img {
+        width: 60%;
+    }
+}

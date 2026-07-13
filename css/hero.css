@@ -1,0 +1,66 @@
+/*  HERO section */
+#hero {
+    height: 67vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.bg-image.left {
+    left: 0;
+}
+
+.bg-image.right {
+    right: 0;
+}
+
+h2 {
+    position: relative;
+    z-index: 2;
+    color: var(--primary-color);
+    margin-top: 184px;
+    margin-left: 35px;
+    font-size: 39px;
+    font-weight: 300;
+    letter-spacing: -0.06em;
+}
+
+.dark-green {
+    color: var(--secondary-color);
+}
+
+/* MOBILE OVERRIDES */
+
+@media screen and (max-width: 768px) {
+    #hero {
+        height: 60vh;
+    }
+
+    h2 {
+        margin-top: 150px;
+    }
+
+    .bg-image {
+        width: 100%;
+    }
+
+    .bg-image.left {
+        opacity: 0;
+    }
+
+    .bg-image.right {
+        opacity: 0.9;
+    }
+}
