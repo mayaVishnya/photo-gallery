@@ -26,7 +26,7 @@ function initModal() {
     function openModal(item_id) {
         if (!modal) return;
     
-        const items = getItems();
+        const items = window.getGalleryItems();
         const item = items.find(i => i.id === item_id);
         if (!item) return;
         

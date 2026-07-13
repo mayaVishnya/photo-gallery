@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Niki's Gallery</title>
 
-        <!-- connecting the stylesheets -->
+        <!-- stylesheets -->
         <link rel="stylesheet" href="css/variables.css">
 
         <link rel="stylesheet" href="css/intro.css">
@@ -18,7 +18,9 @@
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/responsive.css">
 
+        <!-- Font Awesome Icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     </head>
     <body>
@@ -63,8 +65,6 @@
                     <option value="street">Street</option>
                 </select>
                 <div id="gallery-container">
-                 <!-- TO DO: do collage like website https://www.nigeldanson.com/gallery/iceland -->
-
                 </div>
                 <button id="more-btn">MORE</button>
                 <div id="item-modal"><div id="modal-content"></div></div>
@@ -130,8 +130,15 @@
         })();
         </script>
         
-        <!-- connecting all the scripts -->
+        <!-- JS Scrips -->
+
+        <!-- ImagesLoaded (Detects when images are fully loaded) -->
+        <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+        <!--  Masonry Layout (The puzzle engine) -->
+        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
         <script src="js/utils.js"></script>
+        <script src="js/gallery-data.js"></script>
         <script src="js/carousel.js"></script>
         <script src="js/gallery.js"></script>
         <script src="js/modal.js"></script>

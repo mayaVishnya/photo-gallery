@@ -16,22 +16,20 @@
 
 #gallery-container {
     display: block;
-    width: 100%;
-    gap: 20px;
+    width: 94%;
+    margin: 50px auto 40px;
 }
 
 .item {
-    margin: auto;
+    margin-bottom: 20px;
     position: relative;
     cursor: pointer;
-    height: 100%;
-    width: 100%;
-    transition: transform 0.5s ease opacity 0.5s ease;
+    width: 32%;
+    float: left;
 }
 
 .item-img {
     display: block;
-    height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: center;
@@ -118,7 +116,6 @@
         width: 100%;
         float: none;
         margin-bottom: 30px;
-        transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
     .item-img {
