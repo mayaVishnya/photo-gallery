@@ -123,7 +123,7 @@ function initCarousel () {
     // add caroulel 'movement'
     let slideInterval = null;
     const AUTO_SLIDE_INTERVAL = 3000; // 3 sec
-    const INTERACTIVE_SLIDE_INTERVAL = 1500; // 1.5 sec when user is interacting
+    const INTERACTIVE_SLIDE_INTERVAL = 1000; // 1 sec when user is interacting
     let interactionMode = "auto"; // auto, left, right, pause
     
     function clearSlideInterval() {
